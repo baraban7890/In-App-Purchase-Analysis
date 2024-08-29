@@ -1,5 +1,5 @@
 # CRAM Group
-# $PENDING: predicting player likelihood of in-game purchases
+# $PENDING :video_game:: predicting player likelihood of in-game purchases
 
 **Industry:** Online Services - Gaming\
 **Project Type:** Research & Predicting Analysis\
@@ -23,8 +23,8 @@
 10. [Conclusion](#conclusion)
 11. [References](#references)
 
-
-
+- [ ] Testing 
+- [x] Testing Two
 
 
 ---
@@ -95,6 +95,7 @@ The project will use a combination of machine learning models, including K Neare
 - Evaluate the cost of the Machine Learning Data Scientist and its impact on ROI.
 - Contribute to README documentation regarding code usage and installation. 
 - Serve as a key presenter. 
+
 
 ### **Ryan Hough**
 **Responsibilities:**
@@ -175,4 +176,3 @@ This project aims to deliver a robust predictive model that can forecast player 
 
 - [Predict Online Gaming Behavior Dataset](https://www.kaggle.com/datasets/rabieelkharoua/predict-online-gaming-behavior-dataset)
 - [Other references will be added as the project progresses.]
-
