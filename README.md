@@ -1,5 +1,5 @@
 # CRAM Group
-# $PENDING: predicting player likelihood of in-game purchases
+# $PENDING :video_game:: predicting player likelihood of in-game purchases
 
 **Industry:** Online Services - Gaming\
 **Project Type:** Research & Predicting Analysis\
@@ -23,8 +23,8 @@
 10. [Conclusion](#conclusion)
 11. [References](#references)
 
-
-
+- [ ] Testing 
+- [x] Testing Two
 
 
 ---
