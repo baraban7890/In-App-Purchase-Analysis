@@ -96,6 +96,7 @@ The project will use a combination of machine learning models, including K Neare
 - Contribute to README documentation regarding code usage and installation. 
 - Serve as a key presenter. 
 
+
 ### **Ryan Hough**
 **Responsibilities:**
 - Collaborate on dataset evaluation and project objectives. 
@@ -175,4 +176,3 @@ This project aims to deliver a robust predictive model that can forecast player 
 
 - [Predict Online Gaming Behavior Dataset](https://www.kaggle.com/datasets/rabieelkharoua/predict-online-gaming-behavior-dataset)
 - [Other references will be added as the project progresses.]
-
