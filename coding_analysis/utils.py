@@ -41,7 +41,7 @@ def do_pca(X,y,num_components=7):
 
 
 
-def preprocess_and_clean(gaming_df, smote=False, smoteen=False, rus = False, ros = False, cc = False, pca = False):
+def preprocess_and_clean(gaming_df, smote=False, smoteenn=False, rus = False, ros = False, cc = False, pca = False):
     custom_mapping = [
         ['Easy', 'Medium', 'Hard'],  # Custom order for 'GameDifficulty', 0 is easy, 1 is medium, 2 is hard
         ['Low', 'Medium', 'High']  # Custom order for 'EngagementLevel', 0 is low, 1 is medium, 2 is high
@@ -66,36 +66,43 @@ def preprocess_and_clean(gaming_df, smote=False, smoteen=False, rus = False, ros
     y = gaming_df['InGamePurchases']
 
     if smote:
-        if smoteen or rus or ros or cc:
+        if smoteenn or rus or ros or cc:
             raise ValueError("Only one of smote, smoteen, rus, ros, or cc can be True at the same time.")
         else:
             gaming_df = apply_resampling(X,y,SMOTE)
-    elif smoteen:
+    elif smoteenn:
         if smote or rus or ros or cc:
             raise ValueError("Only one of smote, smoteen, rus, ros, or cc can be True at the same time.")
         else:
             gaming_df = apply_resampling(X,y,SMOTEENN)
+    elif ros:
+        if smote or rus or smoteenn or cc:
+            raise ValueError("Only one of smote, smoteen, rus, ros, or cc can be True at the same time.")
+        else:
+            gaming_df = apply_resampling(X,y,RandomOverSampler)
     elif rus:
-        if smoteen or smote or ros or cc:
+        if smoteenn or smote or ros or cc:
             raise ValueError("Only one of smote, smoteen, rus, ros, or cc can be True at the same time.")
         else:
             gaming_df = apply_resampling(X,y,RandomUnderSampler)
     elif cc:
-        if smoteen or rus or ros or smote:
+        if smoteenn or rus or ros or smote:
             raise ValueError("Only one of smote, smoteen, rus, ros, or cc can be True at the same time.")
         else:
-            gaming_df = apply_resampling(X,y, cc)
+            gaming_df = apply_resampling(X,y, ClusterCentroids)
     if pca: ### FIX THIS
         pca_df = do_pca(X,y)
         gaming_df = standard_scale(pca_df)
     return gaming_df
 
 ### Creates and fits a model of your choosing
-def create_and_fit_model(model,X_train,y_train,num=10,random_state=7):
+def create_and_fit_model(model,X_train,y_train,num=10,random_state=7,max_iter=1000):
     if model is RandomForestClassifier:
         pred_model = model(random_state=random_state,n_estimators=num)
     elif model is KNeighborsClassifier:
         pred_model = model(random_state=random_state,n_neighbors=num)
+    elif model is LogisticRegression:
+        pred_model = model(random_state=random_state,max_iter=1000)
     else:
         pred_model = model(random_state=random_state)
     pred_model.fit(X_train,y_train)
@@ -106,4 +113,3 @@ def eval_model(fit_model,X_test,y_test):
     print(f'confusion matrix: {confusion_matrix(y_test,y_pred)}')
     print(f'balanced accuracy score: {balanced_accuracy_score(y_test,y_pred)}')
     print(f'classification report: {classification_report(y_test,y_pred)}')
-    print(f'roc_auc_score: {roc_auc_score(y_test,y_pred)}')
