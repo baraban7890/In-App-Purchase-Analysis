@@ -3,12 +3,16 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, classification_report, balanced_accuracy_score, roc_auc_score
+from sklearn.metrics import confusion_matrix, classification_report, balanced_accuracy_score, roc_auc_score, r2_score
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import ClusterCentroids
 from imblearn.over_sampling import SMOTE
 from imblearn.combine import SMOTEENN
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 
 def apply_resampling(X, y, method, random_state=7):
     sampler = method(random_state=random_state)
@@ -85,3 +89,21 @@ def preprocess_and_clean(gaming_df, smote=False, smoteen=False, rus = False, ros
         pca_df = do_pca(X,y)
         gaming_df = standard_scale(pca_df)
     return gaming_df
+
+### Creates and fits a model of your choosing
+def create_and_fit_model(model,X_train,y_train,num=10,random_state=7):
+    if model is RandomForestClassifier:
+        pred_model = model(random_state=random_state,n_estimators=num)
+    elif model is KNeighborsClassifier:
+        pred_model = model(random_state=random_state,n_neighbors=num)
+    else:
+        pred_model = model(random_state=random_state)
+    pred_model.fit(X_train,y_train)
+    return pred_model
+
+def eval_model(fit_model,X_test,y_test):
+    y_pred = fit_model.predict(X_test)
+    print(f'confusion matrix: {confusion_matrix(y_test,y_pred)}')
+    print(f'balanced accuracy score: {balanced_accuracy_score(y_test,y_pred)}')
+    print(f'classification report: {classification_report(y_test,y_pred)}')
+    print(f'roc_auc_score: {roc_auc_score(y_test,y_pred)}')
