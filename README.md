@@ -143,11 +143,14 @@ The project will use a combination of machine learning models, including K Neare
 
 **Client ROI:**
 - The project's recommendation and model implementtations are expected to significantly enhance in-game purchase revenue, providing a strong ROI for potential clients.
+
 ---
+
 ## Licensing and Legal Terms
 
 The dataset licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). The license allows us to share, copy, and redistribute the material in any medium or format, as well as adapt, remix, transform, and build upon the material for any purpose, even commercially. Appropriate credit should be provided with a link to the license. https://creativecommons.org/licenses/by/4.0/
 
+---
 
 ## Challenges and Solutions
 
