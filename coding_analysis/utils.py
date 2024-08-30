@@ -117,8 +117,11 @@ def preprocess_and_clean(gaming_df, smote=False, smoteenn=False, rus = False, ro
         gaming_df = standard_scale(pca_df)
     return gaming_df
 
-### Creates and fits a model of your choosing
+
 def create_and_fit_model(model,X_train,y_train,num=10,random_state=7,max_iter=1000, kernel='rbf'):
+    '''
+        This method creates and fits a model that is specified, with the specified parameters.
+    '''
     if model is RandomForestClassifier:
         pred_model = model(random_state=random_state,n_estimators=num)
     elif model is KNeighborsClassifier:
@@ -131,8 +134,10 @@ def create_and_fit_model(model,X_train,y_train,num=10,random_state=7,max_iter=10
     return pred_model
 
 def eval_model(fit_model,X_test,y_test):
+    '''
+        This method prints out the confusion matrix, balanced accuracy score, and classification report.
+    '''
     y_pred = fit_model.predict(X_test)
     print(f'confusion matrix: {confusion_matrix(y_test,y_pred)}')
     print(f'balanced accuracy score: {balanced_accuracy_score(y_test,y_pred)}')
     print(f'classification report: {classification_report(y_test,y_pred)}')
-
