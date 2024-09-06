@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report, balanced_accuracy_score, accuracy_score
+import matplotlib.pyplot as plt
 
 def split_data(df):
     '''
@@ -26,8 +27,6 @@ def do_pca(X,num_components=7):
     pca_df = pd.DataFrame(components, columns=cols)
     pca_component_weights = pd.DataFrame(pca.components_.T, columns=cols, index=X.columns)
     return pca_df, pca, pca_component_weights
-
-
 
 def preprocess_and_clean(gaming_df):
     '''
@@ -73,3 +72,34 @@ def eval_model(fit_model,X_test,y_test):
     print(f'Balanced Accuracy Score: {balanced_accuracy_score(y_test,y_pred)}')
     print(f'Classification Report:')
     print(classification_report(y_test,y_pred))
+
+
+def merge_with_dummy(model_dict, dummy_dict):
+    '''
+        This method merges a dictionary containing accuracies with the dummy dictionary.
+    '''
+    merged_dict = {**model_dict, **dummy_dict}  # Merging both dictionaries
+    return merged_dict
+
+def plot_accuracies(merged_dict, method,test_distribution):
+    keys = list(merged_dict.keys())
+    values = list(merged_dict.values())
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(keys, values, color='skyblue')  # Create the bar graph
+        # Add labels and title
+
+    plt.xlabel('Method used')
+    plt.ylabel('Accuracy')
+    plt.title(f'Comparing {method} with different preprocessing methods against dummy methods')
+
+    ### 50% accuracy line
+    plt.axhline(y=0.5, color='red', linestyle='--', linewidth=2, label='0.5 Accuracy')
+    ### Proportions of 0's in the test data.
+    plt.axhline(y=test_distribution, color='blue', linestyle='--', linewidth=2, label='0.5 Accuracy')
+
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+
+    # Display the plot
+    plt.show()
