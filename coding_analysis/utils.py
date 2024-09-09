@@ -81,7 +81,7 @@ def merge_with_dummy(model_dict, dummy_dict):
     merged_dict = {**model_dict, **dummy_dict}  # Merging both dictionaries
     return merged_dict
 
-def plot_accuracies(merged_dict, method,test_distribution):
+def plot_accuracies_and_save(merged_dict, method,test_distribution, fileName):
     keys = list(merged_dict.keys())
     values = list(merged_dict.values())
 
@@ -101,5 +101,6 @@ def plot_accuracies(merged_dict, method,test_distribution):
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
 
+    plt.savefig(fileName)
     # Display the plot
     plt.show()
