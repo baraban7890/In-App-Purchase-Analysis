@@ -1,5 +1,5 @@
 # CRAM Group
-# :video_game:: $PENDING :video_game:: predicting player () of in-game purchases
+# :video_game: $PENDING :video_game:: predicting player () of in-game purchases
 
 **Industry:** Online Services - Gaming\
 **Project Type:** Research & Predicting Analysis\
