@@ -111,17 +111,17 @@ The project will use a combination of machine learning models, including K Neare
    - Additional resarch within the Kaggle Data Set, and other analysis completed by users, showed other strong indicators of a synthetic data set, such as near uniform distributions across feature categories including age, difficulty, genre.  The data seemed too good to be true.  
 6. **Visualization:** Create plots and graphs to visualize the performance of each model.
    - Most visualizations are included in the presentation, i.e. correlation matrix, and iterations of running 7 different variations for each model including:
-      - _Base_: no scaling or resampling applied to features
-      - _Scaled_: only scaling applied to features
-      - _SMOTEENN_: with scaled features
-      - _SMOTE_: with scaled features
-      - _ClusterCentroids_: with scaled features
-      - _RandomOverSampler_: with scaled features
-      - _RandomUnderSampler_: with scaled features
+      - **Base**: no scaling or resampling applied to features
+      - **Scaled**: only scaling applied to features
+      - **SMOTEENN**: with scaled features
+      - **SMOTE**: with scaled features
+      - **ClusterCentroids**: with scaled features
+      - **RandomOverSampler**: with scaled features
+      - **RandomUnderSampler**: with scaled features
    - The accuracies for each model and their respective variations are plotted against 'dummy' models and their accuracies. These models are:
-      - _MostFrequentDummy_: Predicts the most frequent target class in the training set.
-      - _StratifiedDummy_: Predicts target class according to the distribution of the training data.
-      - _UniformDummy_: Predicts target classes equally among them, in this case there are two target classes (50/50 chance).
+      - **MostFrequentDummy**: Predicts the most frequent target class in the training set.
+      - **StratifiedDummy**: Predicts target class according to the distribution of the training data.
+      - **UniformDummy**: Predicts target classes equally among them, in this case there are two target classes (50/50 chance).
 7. **Documentation:** Document the iterative changes and final results for each model.
    - See numbers 4 and 5 above, noting the iterative steps used to create the visualations that are documenting the impact of the changing and evolution of the model scenarios.
 8. **Evaluation:**
@@ -219,9 +219,9 @@ The project will use a combination of machine learning models, including K Neare
 ## Conclusion
  
 In order to detect synthetic data, a comprehensive EDA must be conducted. Here are some red flags that may signal your data is synthetic. 
-   - _Correlation Matrices_: Unnatural correlations between variables are a key sign. For example, an almost zero correlation between all variables (as in some synthetic datasets) or overly strong correlations between features and the target variable that enable too much predictive power. In real-life data, such extremes are uncommon.
-   - _Distribution Analysis_: Analyzing the distributions of different variables may yield some insight as well. If the distribution of some variables seems _too_ good to be true, such as a near uniform or a very smooth normal distribution, the data is probably synthetic.
-   - _Too much precision_: For variables that have to be measured, too much precision, or too many decimal places in the values may signal synthetic data.  
+   - **Correlation Matrices**: Unnatural correlations between variables are a key sign. For example, an almost zero correlation between all variables (as in some synthetic datasets) or overly strong correlations between features and the target variable that enable too much predictive power. In real-life data, such extremes are uncommon.
+   - **Distribution Analysis**: Analyzing the distributions of different variables may yield some insight as well. If the distribution of some variables seems _too_ good to be true, such as a near uniform or a very smooth normal distribution, the data is probably synthetic.
+   - **Too much precision**: For variables that have to be measured, too much precision, or too many decimal places in the values may signal synthetic data.  
 
 These are only a few of the red flags that synthetic data may raise and it is important to be on the lookout for them. Catching these warning signs is imperative in order to avoid wasting precious resources pursuing a lead that ended up being based off of synthetic data. We hope that our experience helps others spot synthetic data before it becomes an issue.
 
