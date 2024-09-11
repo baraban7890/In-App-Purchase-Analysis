@@ -203,12 +203,6 @@ The project will use a combination of machine learning models, including K Neare
 ![alt text](image.png)
 ---
 
-## Licensing and Legal Terms
-
-The dataset licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). The license allows us to share, copy, and redistribute the material in any medium or format, as well as adapt, remix, transform, and build upon the material for any purpose, even commercially. Appropriate credit should be provided with a link to the license. https://creativecommons.org/licenses/by/4.0/
-
----
-
 ## Challenges and Solutions
 
 1. **Data Quality:**
@@ -230,6 +224,12 @@ In order to detect synthetic data, a comprehensive EDA must be conducted. Here a
    - _Too much precision_: For variables that have to be measured, too much precision, or too many decimal places in the values may signal synthetic data.  
 
 These are only a few of the red flags that synthetic data may raise and it is important to be on the lookout for them. Catching these warning signs is imperative in order to avoid wasting precious resources pursuing a lead that ended up being based off of synthetic data. We hope that our experience helps others spot synthetic data before it becomes an issue.
+
+---
+
+## Licensing and Legal Terms
+
+The dataset licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). The license allows us to share, copy, and redistribute the material in any medium or format, as well as adapt, remix, transform, and build upon the material for any purpose, even commercially. Appropriate credit should be provided with a link to the license. https://creativecommons.org/licenses/by/4.0/
 
 ---
 
