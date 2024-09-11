@@ -53,7 +53,7 @@ The primary objectives of this research are:
    - Support Vector Classifier
    - KNearest Neighbors
 3. **Provide Strategic Recommendations:**
-   - Clean your dataset. 
+   - No recommendations specific to in-app purchases can be generated from this dataset.
    - Conduct a comprehensive Exploratory Data Analysis (EDA). 
    - Be alert for synthetically generated data. **Read more below!** 
 
@@ -76,7 +76,7 @@ The primary objectives of this research are:
 1. **Model Selection:** Which model type provides the best predictive capability for predicting in-game purchases?
    - **Answer:** N/A.  Please see Process Overview below, and evolution of model results leading to conclusion that data set was synthetic, and ultimately has no predictive value regardless of model used.
 2. **Model Evaluation:** Are there risks related to overfitting or underfitting within the models that require further investigation?
-   - **Answer:** There are "no" risks of related overfitting or underfitting within the dataset. 
+   - **Answer:** There are "no" risks of related to underfitting, but the risks related to overfitting are poor results on new data, but in the end it doesn't matter because of the content of the data. 
 3. **Model Confidence:** What further analysis ensures that the chosen model is the best fit for this project?
    - **Answer:** N/A *see additional information below regarding process overview and conclusions.*
 4. **Influential Features:** With the chosen model, which features most significantly influence the likelihood of in-game purchases?
@@ -99,30 +99,36 @@ The project will use a combination of machine learning models, including K Neare
    - The preprossing allowed for use of OrdinalEncoder to address feature sets such as Game Difficulty and Engagement Level.
    - OneHotEncoder was used to address feature sets such as Gender, Location, and Game Genre.
    - Also note the "Analysis" section below, identifying further EDA that was used to understand the validity of the data after encountering red flags.
-3. **Model Development:** Load, evaluate, and optimize each predictive model.
-   - Alex Baraban built and evaluated Logistic Regression Model
-   - Ryan Hough built and eveluated K Nearest Neighbor model
-   - Catherine Wanko built and evaluated Support Vector Classifier model
-   - Mike Nicholas built and evaluated Random Forest Model
-4. **Analysis:** Perform data analysis to identify the best model.
-   - During the evaluation process, the results were not generating improved predictive results while attempting to perfect the models, changing parameters such as Random State, max_iter, n_estimators, etc.
-   - Further evaluation, including creating a correlation matrix, demonstrated a zero correlation across all featurs withing the data set, leading to a strong hypothesis that the data is synthetic.
-   - Additional resarch within the Kaggle Data Set, and other analysis completed by users, showed other strong indicators of a synthetic data set, such as near perfect distributions across feature categories including age, difficulty, genre.  It seemed too good to be true.  
-5. **Visualization:** Create plots and graphs to visualize the performance of each model.
-   - Most visualizations are included in the presentation, i.e. correlation matrix, and iterations of running 8 different scenarios for each model including:
-      - Base
-      - Scaled
-      - SMOTEENN
-      - SMOTE
-      - ClusterCentroids
-      - RandomOverSampler
-      - RandomUnderSampler
-      - MostFrequentDummy
-      - StratifiedDummy
-      - UniformDummy
-6. **Documentation:** Document the iterative changes and final results for each model.
+3. **Model Development:** Load, evaluate, and optimize each predictive model. A random state of 7 was used for all models and resampling methods for reproducibility.
+   - Alex Baraban built and evaluated Logistic Regression Model.
+   - Ryan Hough built and eveluated K Nearest Neighbor model.
+   - Catherine Wanko built and evaluated Support Vector Classifier model.
+   - Mike Nicholas built and evaluated Random Forest Model.
+5. **Analysis:** Perform data analysis to identify the best model.
+   - During the evaluation process, the results were not improving on the test set, despite our attempts to perfect the models by changing parameters such as max_iter, n_estimators, and n_neighbors.
+   - The confusion matrices helped us figure out that the model was only predicting the majority class which led us to a deep dive into the data.
+   - This further data exploration, included creating a correlation matrix, demonstrated a zero correlation across almost all features within the data set, leading to a strong hypothesis that the data is synthetic.
+   - Additional resarch within the Kaggle Data Set, and other analysis completed by users, showed other strong indicators of a synthetic data set, such as near uniform distributions across feature categories including age, difficulty, genre.  The data seemed too good to be true.  
+6. **Visualization:** Create plots and graphs to visualize the performance of each model.
+   - Most visualizations are included in the presentation, i.e. correlation matrix, and iterations of running 7 different variations for each model including:
+      - _Base_: no scaling or resampling applied to features
+      - _Scaled_: only scaling applied to features
+      - _SMOTEENN_: with scaled features
+      - _SMOTE_: with scaled features
+      - _ClusterCentroids_: with scaled features
+      - _RandomOverSampler_: with scaled features
+      - _RandomUnderSampler_: with scaled features
+   - The accuracies for each model and their respective variations are plotted against 'dummy' models and their accuracies. These models are:
+      - _MostFrequentDummy_: Predicts the most frequent target class in the training set.
+      - _StratifiedDummy_: Predicts target class according to the distribution of the training data.
+      - _UniformDummy_: Predicts target classes equally among them, in this case there are two target classes (50/50 chance).
+7. **Documentation:** Document the iterative changes and final results for each model.
    - See numbers 4 and 5 above, noting the iterative steps used to create the visualations that are documenting the impact of the changing and evolution of the model scenarios.
-7. **Evaluation:** Assess the impact on ROI and provide strategic recommendations based on the findings.
+8. **Evaluation:**
+   - We evaluated the models against the test data by using four different metrics: Accuracy score, balanced accuracy score, confusion matrices, and a classification report.
+      - The confusion matrices helped us figure out that the model was only predicting the majority class, which in the end led us to our conclusion that this data is synthetic.
+      - Only accuracy score was used in the graphs for non-technical audiences.
+   - Assess the impact on ROI and provide strategic recommendations based on the findings.
 
 ---
 
@@ -206,19 +212,23 @@ The dataset licensed under the Creative Commons Attribution 4.0 International Li
 ## Challenges and Solutions
 
 1. **Data Quality:**
-   Once we realized the dataset was synthetic, we changed the focus of our project to educate others about the warning signs.  
+   Once we realized the dataset was synthetic, we changed the focus of our project to educate others about the warning signs, and how to spot synthetic data.  
 
 2. **Accuracy:** 
    Due to the nature of our unknown synthetic dataset, we experienced lack of predictive value in the evaluations. We confirmed that previous users of the dataset had generated similar results which led us to understand that our dataset was synthetic. We challenged the author of the dataset's validity, and within 24 hours the author posted a disclaimer that the data was synthetic. 
 
 3. **Working with Synthetic Data:** 
-   Didn't make any sense. Our models had no predictive power. The accuracy was diminished with applied methods that should have improved accuracy, such as, oversampling and undersampling. 
+   Didn't make any sense. Our models had no predictive power. In fact, the "Most Frequent Dummy" model predicted as well as the best of _any_ of our "real" models. The accuracy was diminished with applied methods that should have improved accuracy, such as, oversampling and undersampling. 
 
 ---
 
 ## Conclusion
  
-This project aims to educate other users about synthetic data and identifying red flags. 
+In order to detect synthetic data, a comprehensive EDA must be conducted. Here are some red flags that may signal your data is synthetic. 
+   - _Correlation Matrices_: Unnatural correlations between variables are a key sign. For example, an almost zero correlation between all variables (as in some synthetic datasets) or overly strong correlations between features and the target variable that enable too much predictive power. In real-life data, such extremes are uncommon.
+   - _Distribution Analysis_: Analyzing the distributions of different variables may yield some insight as well. If the distribution of some variables seems _too_ good to be true, such as a near uniform or a very smooth normal distribution, the data is probably synthetic.
+   - _Too much precision_: For variables that have to be measured, too much precision, or too many decimal places in the values may signal synthetic data.
+These are only a few of the red flags that synthetic data may raise and it is important to be on the lookout for them. Catching these warning signs is imperative in order to avoid wasting precious resources pursuing a lead that ended up being based off of synthetic data. We hope that our experience helps others spot synthetic data before it becomes an issue.
 
 ---
 
