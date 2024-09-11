@@ -18,9 +18,9 @@
 5. [Methodology](#methodology)
 6. [Team Roles and Responsibilities](#team-roles-and-responsibilities)
 7. [Cost and ROI Estimation](#cost-and-roi-estimation)
-8. [Licensing and Legal Terms](#licensing-and-legal-terms)
-9. [Challenges and Solutions](#challenges-and-solutions)
-10. [Conclusion](#conclusion)
+8. [Challenges and Solutions](#challenges-and-solutions)
+9. [Conclusion](#conclusion)
+10. [Licensing and Legal Terms](#licensing-and-legal-terms)
 11. [References](#references)
 
 ---
