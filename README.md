@@ -227,7 +227,7 @@ The dataset licensed under the Creative Commons Attribution 4.0 International Li
 In order to detect synthetic data, a comprehensive EDA must be conducted. Here are some red flags that may signal your data is synthetic. 
    - _Correlation Matrices_: Unnatural correlations between variables are a key sign. For example, an almost zero correlation between all variables (as in some synthetic datasets) or overly strong correlations between features and the target variable that enable too much predictive power. In real-life data, such extremes are uncommon.
    - _Distribution Analysis_: Analyzing the distributions of different variables may yield some insight as well. If the distribution of some variables seems _too_ good to be true, such as a near uniform or a very smooth normal distribution, the data is probably synthetic.
-   - _Too much precision_: For variables that have to be measured, too much precision, or too many decimal places in the values may signal synthetic data.
+   - _Too much precision_: For variables that have to be measured, too much precision, or too many decimal places in the values may signal synthetic data.  
 These are only a few of the red flags that synthetic data may raise and it is important to be on the lookout for them. Catching these warning signs is imperative in order to avoid wasting precious resources pursuing a lead that ended up being based off of synthetic data. We hope that our experience helps others spot synthetic data before it becomes an issue.
 
 ---
