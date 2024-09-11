@@ -42,8 +42,11 @@ The primary objectives of this research are:
       - Location
       - GameGenre
       - PlayTimeHours 
-      - InGamePurchases
       - GameDifficulty 
+      - Sessions Per Week
+      - Average Duration Minutes
+      - Player Level
+      - Achievements Unlocked
 2. **Develop Predictive Models:**
    - Logistic Regression
    - Random Forest
@@ -71,13 +74,13 @@ The primary objectives of this research are:
 ## Research Questions
 
 1. **Model Selection:** Which model type provides the best predictive capability for predicting in-game purchases?
-   - **Answer:** N/A *see additional information below.*
+   - **Answer:** N/A.  Please see Process Overview below, and evolution of model results leading to conclusion that data set was synthetic, and ultimately has no predictive value regardless of model used.
 2. **Model Evaluation:** Are there risks related to overfitting or underfitting within the models that require further investigation?
    - **Answer:** There are "no" risks of related overfitting or underfitting within the dataset. 
 3. **Model Confidence:** What further analysis ensures that the chosen model is the best fit for this project?
-   - **Answer:** N/A *see additional information below regarding model conclusions.*
+   - **Answer:** N/A *see additional information below regarding process overview and conclusions.*
 4. **Influential Features:** With the chosen model, which features most significantly influence the likelihood of in-game purchases?
-   - **Answer:** N/A *see additional informaiton below regarding model conclusions.*
+   - **Answer:** N/A *see additional information below regarding process overview and model conclusions.*
 5. **Performance Metric:** Can the model achieve at least 75% classification accuracy or a 0.80 R-squared?
    - **Answer:** Yes, it certainly can! 
 
@@ -89,12 +92,36 @@ The project will use a combination of machine learning models, including K Neare
 
 ### Process Overview: 
 
-1. **Data Pre-processing:** Clean and prepare the dataset for analysis.
+1. **Data Pre-processing:** Clean and prepare the dataset for analysis.  
+   - Data types and Null values were researched, and addressed to ensure that no null values existed and that data formats could be utilized or converted.
 2. **EDA:** Inspect dataframe and data types of each feature. 
+   - Once null values were confirmed to be zero, methods were built in a utils.py file to utilize for preprocessing each model.
+   - The preprossing allowed for use of OrdinalEncoder to address feature sets such as Game Difficulty and Engagement Level.
+   - OneHotEncoder was used to address feature sets such as Gender, Location, and Game Genre.
+   - Also note the "Analysis" section below, identifying further EDA that was used to understand the validity of the data after encountering red flags.
 3. **Model Development:** Load, evaluate, and optimize each predictive model.
+   - Alex Baraban built and evaluated Logistic Regression Model
+   - Ryan Hough built and eveluated K Nearest Neighbor model
+   - Catherine Wanko built and evaluated Support Vector Classifier model
+   - Mike Nicholas built and evaluated Random Forest Model
 4. **Analysis:** Perform data analysis to identify the best model.
+   - During the evaluation process, the results were not generating improved predictive results while attempting to perfect the models, changing parameters such as Random State, max_iter, n_estimators, etc.
+   - Further evaluation, including creating a correlation matrix, demonstrated a zero correlation across all featurs withing the data set, leading to a strong hypothesis that the data is synthetic.
+   - Additional resarch within the Kaggle Data Set, and other analysis completed by users, showed other strong indicators of a synthetic data set, such as near perfect distributions across feature categories including age, difficulty, genre.  It seemed too good to be true.  
 5. **Visualization:** Create plots and graphs to visualize the performance of each model.
+   - Most visualizations are included in the presentation, i.e. correlation matrix, and iterations of running 8 different scenarios for each model including:
+      - Base
+      - Scaled
+      - SMOTEENN
+      - SMOTE
+      - ClusterCentroids
+      - RandomOverSampler
+      - RandomUnderSampler
+      - MostFrequentDummy
+      - StratifiedDummy
+      - UniformDummy
 6. **Documentation:** Document the iterative changes and final results for each model.
+   - See numbers 4 and 5 above, noting the iterative steps used to create the visualations that are documenting the impact of the changing and evolution of the model scenarios.
 7. **Evaluation:** Assess the impact on ROI and provide strategic recommendations based on the findings.
 
 ---
@@ -182,7 +209,7 @@ The dataset licensed under the Creative Commons Attribution 4.0 International Li
    Once we realized the dataset was synthetic, we changed the focus of our project to educate others about the warning signs.  
 
 2. **Accuracy:** 
-   Due to the nature of our unknown synthetic dataset, we experienced lack of predictive value in the evaluations. We confirmed that previous users of the dataset had generated similar results which lead us to understand that our dataset was synthetic. We challenged the author of the dataset's validity, and within 24 hours the author posted a disclaimer that the data was synthetic. 
+   Due to the nature of our unknown synthetic dataset, we experienced lack of predictive value in the evaluations. We confirmed that previous users of the dataset had generated similar results which led us to understand that our dataset was synthetic. We challenged the author of the dataset's validity, and within 24 hours the author posted a disclaimer that the data was synthetic. 
 
 3. **Working with Synthetic Data:** 
    Didn't make any sense. Our models had no predictive power. The accuracy was diminished with applied methods that should have improved accuracy, such as, oversampling and undersampling. 
